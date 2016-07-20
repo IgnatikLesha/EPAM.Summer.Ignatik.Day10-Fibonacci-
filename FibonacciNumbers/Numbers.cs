@@ -9,19 +9,21 @@ namespace FibonacciNumbers
 {
     public static class Numbers
     {
-        public static int Fibonacci(int n)
+        private static int FibonacciNumber(int n)
         {
-            return n > 1 ? Fibonacci(n - 1) + Fibonacci(n - 2) : n;
+            if( n <= 0)
+                throw new ArgumentException();
+            return n > 1 ? FibonacciNumber(n - 1) + FibonacciNumber(n - 2) : n;
         }
 
-        public static IEnumerator GetNumbers(int n)
+        public static IEnumerator GetFibonacciNumbers(int n)
         {
             if(n <=0 )
                 throw new ArgumentException();
 
             for (int i = 0; i < n; i++)
             {
-                yield return Fibonacci(i);
+                yield return FibonacciNumber(i);
             }
         }
 
